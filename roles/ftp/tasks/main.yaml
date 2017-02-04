@@ -1,0 +1,30 @@
+---
+- name: Exec expected ftp command
+  expect:
+    command: "ftp {{ item }}"
+    responses:
+      "[Nn]ame.*" :
+        - "{{ TARGET_USER }}"
+      "[Pp]assword.*":
+        - "{{ TARGET_PASS }}"
+      ".*[>$#]":
+        - "prom"
+        - "bi"
+        - "ls /pub/"
+        - "bye"
+    echo: yes
+  register: REGISTERD_STDOUT
+  with_items:
+    - "{{ TARGET_SERVERS }}"
+
+- name: Debug (stdout)
+  debug: 
+    var: '{{ item.stdout_lines }}'
+  with_items: '{{ REGISTERD_STDOUT.results }}'
+
+- name: Debug (outfile)
+  local_action:
+    module: copy
+    content: "{{ item.stdout }}"
+    dest: "{{ OUTFILE_PATH }}/{{ item.item }}.log"
+  with_items: '{{ REGISTERD_STDOUT.results }}'

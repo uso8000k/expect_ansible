@@ -1,0 +1,19 @@
+---
+language: python
+python:
+  - "2.7"
+
+before_install:
+  - sudo apt-get update -y
+
+install:
+  - pip install ansible
+  - pip install pexpect
+  - "printf '[defaults]\nroles_path = ../' > ansible.cfg"
+
+script:
+  - ansible-playbook -i hosts -u root  --syntax-check
+
+notifications:
+  slack:
+    secure: j1XBpIZcZN/1NekqpiMDQckMpUimSmO+k/xeDuseXwruJ7qX/uxB8AupoDSdiqIlBEci/vj7+ur+Y+7tiwp7J0E5lW3z4dyfpHQLe44OI1nprJyVsD462CXbm6XtCj2lozcQDPOiOlg/EIyOlssLTU1lYIvzdGshwB3gPRulVV4r5C6U218O4geFl9ZHN6gsVv3+rMbk1MbuWllCRYTW3ebsPA6TJv2ZN6+zpjHdMZJKVnx4XiZWIKSvAdDpHtWFDg8Dx5pYYP589uFo1H9uJT6ZNO/BQHdteFGw4qlgpxfwcT0UqruqTNPaog/UjgCTs9VF4cWbRKlOBeGgajE4fkwP/HH2w3HCH8vySLjvX9P/96kNzMU9J29notna97jQct02an1jp6jvSXx3C/MX6DQH/PgnX30iDeO7CfKust33JnR+mW+eu1J9+Jm4vy/9b/l0vofm4qt4z/yVnKzWxijksBnnApw8r5SHjX7CdgGfCdVShDH9ZO5ESq9sebFvfaFStcqzGizP6dnheZ9J8ltxtgjXQ5gquGH882AzrI7imgbm3UkjwpOYUYte3FUaSMB0B8/uRuI7l4DHzoXeUqbBy0DHlPhbhhMAcog5i77Z3SluA6bauHk31ZWPd1nu2opHLPgs7bhFhpBuj9wiksI/HR+8C2LEoNJ9hkUjmUc=
