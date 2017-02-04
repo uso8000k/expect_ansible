@@ -3,5 +3,3 @@ TARGET_SERVERS:
   - "ftp.jp.freebsd.org"
 TARGET_USER: "anonymous"
 TARGET_PASS: "ftp"
-
-OUTFILE_PATH: "./"

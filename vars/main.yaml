@@ -1,2 +1,2 @@
 ---
-OUTFILE_PATH: /tmp
+OUTFILE_PATH: "./output"
