@@ -5,12 +5,15 @@ language: python
 python:
   - "2.7"
 
+before_install:
+  - whoami
+
 install:
   - pip install ansible
   - pip install pexpect
 
 script:
-  - ansible-playbook -i hosts site.yaml -u root
+  - ansible-playbook -i hosts site.yaml
 
 notifications:
   slack:
