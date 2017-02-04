@@ -10,7 +10,7 @@ install:
   - pip install pexpect
 
 script:
-  - ansible-playbook -i hosts -u travis
+  - ansible-playbook -i hosts site.yaml -u travis
 
 notifications:
   slack:
