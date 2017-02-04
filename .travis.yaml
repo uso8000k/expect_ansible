@@ -12,7 +12,7 @@ install:
   - "printf '[defaults]\nroles_path = ../' > ansible.cfg"
 
 script:
-  - ansible-playbook -i hosts -u root  --syntax-check
+  - ansible-playbook -i hosts -u root
 
 notifications:
   slack:
